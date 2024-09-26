@@ -1,3 +1,25 @@
+
+## Development TODO 
+
+- V1 TODO
+    - [ ] One Button to start/stop
+    - [ ] Titile bar : LOGO, Pricing, Chart-AI,Account
+    - [ ] fix the 60mins in one circle
+
+- V2 TODO
+    - [ ]  account and firebase auth
+    - [ ]  pricing page and payment gateway
+
+
+## Product Description
+
+### Design Library
+
+- [Lucide](https://lucide.dev/)
+- [Shadcn](https://ui.shadcn.com/)
+
+## Next.js
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
