@@ -5,12 +5,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #171717; /* for main text */
+  --secondary-color: #f1f1f1; /* for secondary text */
+  --tertiary-color: #f5f5f5;
+  --accent-color: #ff79f8;
+
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary-color: #ededed;
+    --secondary-color: #4f4f4f;
+    --tertiary-color: #262626;
+    --accent-color: #ff79f8;
   }
 }
 
