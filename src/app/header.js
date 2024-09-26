@@ -11,6 +11,7 @@ export default function Header() {
             <LoaderCircle className="h-8 w-8 mr-2" />
             <h1 className="text-2xl font-bold">Pomodoring</h1>
           </div>
+          <button className="text-primary">About</button>
           <button className="text-primary">Pricing</button>
           <button className="text-primary">Chart-AI</button>
           <button className="text-primary">Account</button>
