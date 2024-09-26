@@ -59,7 +59,7 @@ export default function PomodoroTimer() {
 
   // Render the Pomodoro Timer component
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-background">
+    <div className="flex flex-col items-center justify-center bg-background h-[calc(100vh-4rem)]">
       {/* Circular progress bar */}
       <div className="relative w-64 h-64">
         <svg className="w-full h-full" viewBox="0 0 100 100">
