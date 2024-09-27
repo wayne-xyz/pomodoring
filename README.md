@@ -2,10 +2,11 @@
 ## Development TODO 
 
 - V1 TODO
-    - [ ] One Button to start/stop
-    - [ ] Titile bar : LOGO, Pricing, Chart-AI,Account
+    - [X] One Button to start/stop
+    - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
     - [ ] fix the 60mins in one circle
-
+    - [ ] Play sound when timer is done
+    
 - V2 TODO
     - [ ]  account and firebase auth
     - [ ]  pricing page and payment gateway

@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause,Square } from 'lucide-react';
+import { Play, Pause, Square } from 'lucide-react';
 import { Button } from "./button"
+import { initializeAudio, playSound } from './audioUtils';
 
 // Constants for timer durations
 const WORK_TIME = 25 * 60; // 25 minutes in seconds
@@ -15,6 +16,11 @@ export default function PomodoroTimer() {
   const [isBreak, setIsBreak] = useState(false);
   const intervalRef = useRef(null);
 
+  // Initialize audio when component mounts
+  useEffect(() => {
+    initializeAudio();
+  }, []);
+
   // Effect hook to manage timer logic
   useEffect(() => {
     if (isActive && timeLeft > 0) {
@@ -23,6 +29,7 @@ export default function PomodoroTimer() {
       }, 1000);
     } else if (timeLeft === 0) {
       clearInterval(intervalRef.current);
+      playSound(); // Play sound when timer reaches zero
       if (isBreak) {
         setTimeLeft(WORK_TIME);
         setIsBreak(false);
