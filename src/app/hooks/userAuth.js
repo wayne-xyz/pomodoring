@@ -8,7 +8,13 @@ import {
   onAuthStateChanged 
 } from 'firebase/auth';
 
+import { useToast} from '@/hooks/use-toast'
+
+
 const googleProvider = new GoogleAuthProvider();
+
+const isDevelopmentMode = process.env.NEXT_PUBLIC_MODE_ENV === 'development';
+
 
 export function useAuth() {
   const [user, setUser] = useState(null);
