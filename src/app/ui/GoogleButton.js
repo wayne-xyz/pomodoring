@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 
-const GoogleButton = ({ onClick }) => {
+const GoogleButton = forwardRef(({ onClick }, ref) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const buttonClasses = `
@@ -14,6 +14,7 @@ const GoogleButton = ({ onClick }) => {
 
   return (
     <button 
+      ref={ref}
       onClick={onClick}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -38,6 +39,8 @@ const GoogleButton = ({ onClick }) => {
       </div>
     </button>
   );
-};
+});
+
+GoogleButton.displayName = 'GoogleButton';
 
 export default GoogleButton;
