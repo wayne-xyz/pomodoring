@@ -1,6 +1,9 @@
 
 ## Development TODO 
 
+
+
+
 - V1 TODO
     - [X] One Button to start/stop
     - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
@@ -17,8 +20,9 @@
 
 ## Product Description
 
-### Design Library
+### Resources
 
+- [Google Icon](https://developers.google.com/identity/branding-guidelines)
 - [Lucide](https://lucide.dev/)
 - [Shadcn](https://ui.shadcn.com/)
 
