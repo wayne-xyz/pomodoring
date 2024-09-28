@@ -4,18 +4,18 @@
 
 
 
-- V1 TODO
+- V1 TODO List
     - [X] One Button to start/stop
     - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
     - [X] Play sound when timer is done
     - [X] Account login 
+    - [ ] Dark/light mode
     - [ ] Saving data in the database
     - [ ] About page
     - [ ] Pricing page 
     
-- V2 TODO
-    - [ ]  account and firebase auth
-    - [ ]  pricing page and payment gateway
+
+
 
 
 ## Product Description
@@ -25,6 +25,7 @@
 - [Google Icon](https://developers.google.com/identity/branding-guidelines)
 - [Lucide](https://lucide.dev/)
 - [Shadcn](https://ui.shadcn.com/)
+- [magicui](https://magicui.design/)
 
 ## Next.js
 
