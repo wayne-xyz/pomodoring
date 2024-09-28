@@ -13,6 +13,7 @@
     - [ ] Saving data in the database
     - [ ] About page
     - [ ] Pricing page 
+    - [ ] Devloping mode isolation strategy
     
 
 
