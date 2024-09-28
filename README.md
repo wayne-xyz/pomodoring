@@ -4,9 +4,11 @@
 - V1 TODO
     - [X] One Button to start/stop
     - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
-    - [ ] fix the 60mins in one circle
     - [X] Play sound when timer is done
-    - [ ] Notification toast 
+    - [X] Account login 
+    - [ ] Saving data in the database
+    - [ ] About page
+    - [ ] Pricing page 
     
 - V2 TODO
     - [ ]  account and firebase auth
