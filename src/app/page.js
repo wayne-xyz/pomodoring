@@ -1,11 +1,17 @@
 import Header from "./header";
 import PomodoroTimer from "./pomodorotimer";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <PomodoroTimer />
+      <div className="mt-64">
+        <PomodoroTimer />
+      </div>
+      <div className="flex flex-row justify-center items-center  gap-4 mt-12">
+        <Button variant="ghost">Project 1/Task 1</Button>
+      </div>
     </div>
   );
 }
