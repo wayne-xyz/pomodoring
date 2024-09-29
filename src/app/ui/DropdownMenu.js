@@ -20,10 +20,7 @@ export default function LoginDropdownMenu() {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      toast({
-        title: "Signed in successfully",
-        description: "Welcome back!",
-      })
+
     } catch (error) {
       console.error("Failed to sign in", error);
       if (error.message === 'Unauthorized email in development mode') {
@@ -45,10 +42,7 @@ export default function LoginDropdownMenu() {
   const handleLogout = async () => {
     try {
       await logout();
-      toast({
-        title: "Logged out successfully",
-        description: "You have been logged out.",
-      })
+      
     } catch (error) {
       console.error("Failed to log out", error);
       toast({
