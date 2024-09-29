@@ -1,5 +1,9 @@
 // create a user model which export and using in the firestore , accept user object and return user object
 
+
+// name: user
+// fields: userId, email, displayName, userType, subscriptionStartDate, subscriptionEndDate, trialEndDate, isTrial, createdAt, updatedAt, lastLogin
+
 // Function to create a new user object with default values
 export function createUser({
   userId = null,

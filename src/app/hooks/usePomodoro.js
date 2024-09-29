@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from './userAuth';
 import { saveSession } from '../firestoreService/sessionService';
+import { createOrUpdateUserState } from '../firestoreService/stateService';
 import { initializeAudio, playSound } from '../audioUtils';
 
 // Constants for timer durations
@@ -27,6 +28,9 @@ export function usePomodoro() {
   useEffect(() => {
     initializeAudio();
     verboseLog('Pomodoro hook initialized');
+    if(user){
+      createOrUpdateUserState(user.userId, true, new Date());
+    }
   }, []);
 
   // Main timer logic
@@ -60,6 +64,9 @@ export function usePomodoro() {
         verboseLog('Starting work session');
       } else {
         // Work time finished: start break time
+        if(user){
+          createOrUpdateUserState(user.userId, false, new Date());
+        }
         setTimeLeft(BREAK_TIME);
         setIsBreak(true);
         verboseLog('Starting break session');
@@ -109,6 +116,8 @@ export function usePomodoro() {
         console.error('Error saving session:', error);
         verboseLog('Error saving session', error);
       }
+    }else{
+        verboseLog('No user logged in');
     }
   };
 

@@ -6,6 +6,8 @@ import User, { validateUser } from '../models/user';
 // Initialize Firestore database
 const db = getFirestore();
 
+const COLLECTION_NAME = 'users';
+
 /**
  * Save a user to Firestore
  * @param {Object} user - The user object to save
@@ -14,7 +16,7 @@ export async function saveUser(user) {
   // Validate the user object before saving
   validateUser(user);
   // Create a reference to the user document in Firestore
-  const userRef = doc(db, 'users', user.userId);
+  const userRef = doc(db, COLLECTION_NAME, user.userId);
   // Save the user data, merging with existing data if any
   await setDoc(userRef, user, { merge: true });
 }
@@ -26,7 +28,7 @@ export async function saveUser(user) {
  * @returns {Object} The updated user object
  */
 export async function updateUser(userId, updateData) {
-  const userRef = doc(db, 'users', userId);
+  const userRef = doc(db, COLLECTION_NAME, userId);
   const userSnap = await getDoc(userRef);
   
   if (userSnap.exists()) {
@@ -53,7 +55,7 @@ export async function updateUser(userId, updateData) {
  * @returns {Object} The user object
  */
 export async function getUserFromFirestore(userId) {
-  const userRef = doc(db, 'users', userId);
+  const userRef = doc(db, COLLECTION_NAME, userId);
   const userSnap = await getDoc(userRef);
   
   if (userSnap.exists()) {

@@ -1,3 +1,6 @@
+// name: session
+// fields: userId, taskId, taskName, projectId, projectName, startTime, endTime, duration, status, createdAt
+
 
 /**
  * Creates a complete Pomodoro session object ready for saving to Firebase

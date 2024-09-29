@@ -1,6 +1,7 @@
 import Header from "./header";
-import PomodoroTimer from "./pomodorotimer";
+
 import { Button } from "@/components/ui/button";
+import PomodoroTimer from "./ui/PomodoroTimer";
 
 export default function Home() {
   return (

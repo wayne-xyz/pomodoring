@@ -1,10 +1,10 @@
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { app } from '../lib/firebase';
-import { createCompletedSession, addSessionId } from '../models/session';
+import { db } from '../lib/firebase';
+import { createCompletedSession } from '../models/session';
 
 // Initialize Firestore
-const db = getFirestore(app);
 
+const COLLECTION_NAME = 'sessions';
 /**
  * Save a completed Pomodoro session to Firestore
  * @param {Object} sessionData - The session data
@@ -36,9 +36,8 @@ export async function saveSession(sessionData) {
   );
 
   try {
-    const docRef = await addDoc(collection(db, 'sessions'), sessionToSave);
-    const sessionWithId = addSessionId(sessionToSave, docRef.id);
-    return sessionWithId;
+    const docRef = await addDoc(collection(db, COLLECTION_NAME), sessionToSave);
+    return { id: docRef.id, ...sessionToSave };
   } catch (error) {
     console.error('Error saving session:', error);
     throw error;
