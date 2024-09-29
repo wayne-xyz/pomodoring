@@ -63,7 +63,7 @@ export default function LoginDropdownMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {user ? (
-          <Avatar className="rounded-full h-8 w-8 cursor-pointer">
+          <Avatar className="rounded-full cursor-pointer">
             <AvatarImage className="rounded-full" src={user.photoURL} alt={user.displayName} />
             <AvatarFallback className="rounded-full">{user.displayName?.charAt(0)}</AvatarFallback>
           </Avatar>
