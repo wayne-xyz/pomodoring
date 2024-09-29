@@ -11,23 +11,51 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import GoogleButton from './GoogleButton';
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginDropdownMenu() {
   const { user, signInWithGoogle, logout } = useAuth();
+  const { toast } = useToast();
 
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
+      toast({
+        title: "Signed in successfully",
+        description: "Welcome back!",
+      })
     } catch (error) {
       console.error("Failed to sign in", error);
+      if (error.message === 'Unauthorized email in development mode') {
+        toast({
+          title: "Unauthorized",
+          description: "Your email is not authorized for login in development mode.",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "Sign in failed",
+          description: "There was a problem signing you in.",
+          variant: "destructive",
+        })
+      }
     }
   }
 
   const handleLogout = async () => {
     try {
       await logout();
+      toast({
+        title: "Logged out successfully",
+        description: "You have been logged out.",
+      })
     } catch (error) {
       console.error("Failed to log out", error);
+      toast({
+        title: "Logout failed",
+        description: "There was a problem logging you out.",
+        variant: "destructive",
+      })
     }
   }
 

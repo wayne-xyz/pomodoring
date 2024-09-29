@@ -8,13 +8,10 @@ import {
   onAuthStateChanged 
 } from 'firebase/auth';
 
-import { useToast} from '@/hooks/use-toast'
-
-
 const googleProvider = new GoogleAuthProvider();
 
-const isDevelopmentMode = process.env.NEXT_PUBLIC_MODE_ENV === 'development';
-
+const isDevelopmentMode = process.env.NEXT_PUBLIC_DEVELOPMENT_MODE === 'development';
+const allowedEmail = process.env.NEXT_PUBLIC_DEVELOPMENT_ALLOWED_USER_EMAIL;
 
 export function useAuth() {
   const [user, setUser] = useState(null);
@@ -35,14 +32,16 @@ export function useAuth() {
       setLoading(false);
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-
+      if (isDevelopmentMode && result.user.email !== allowedEmail) {
+        await signOut(auth);
+        throw new Error('Unauthorized email in development mode');
+      }
       return result.user;
     } catch (error) {
       console.error("Error signing in with Google", error);
