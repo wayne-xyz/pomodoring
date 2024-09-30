@@ -16,6 +16,7 @@ Devloping released soon.
 - [Lucide](https://lucide.dev/)
 - [Shadcn](https://ui.shadcn.com/)
 - [magicui](https://magicui.design/)
+- [aceternity](https://ui.aceternity.com/)
 
 ## Next.js
 
