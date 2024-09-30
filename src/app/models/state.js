@@ -11,3 +11,9 @@ export function createUserState(userId, isInSession, startTime) {
   };
 }
 
+export function updateUserState(userState, newState) {
+  return {
+    ...userState,
+    ...newState
+  };
+}

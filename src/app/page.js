@@ -11,7 +11,7 @@ export default function Home() {
         <PomodoroTimer />
       </div>
       <div className="flex flex-row justify-center items-center  gap-4 mt-12">
-        <Button variant="ghost">Project 1/Task 1</Button>
+        <Button variant="ghost">Default Project/Pomodoro Session</Button>
       </div>
     </div>
   );
