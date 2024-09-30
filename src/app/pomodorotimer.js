@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Square } from 'lucide-react';
-import { Button } from "./button"
+import { Button } from "./ui/button"
 import { initializeAudio, playSound } from './audioUtils';
 
 // Constants for timer durations

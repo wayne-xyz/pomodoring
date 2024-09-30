@@ -1,5 +1,22 @@
 # Development documentation
 
+## Version Description
+- V1 TODO List
+    - [X] One Button to start/stop
+    - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
+    - [X] Play sound when timer is done
+    - [X] Account login 
+    - [ ] Dark/light mode
+    - [ ] Saving data in the database
+    - [ ] About page
+    - [ ] Pricing page 
+    - [ ] Devloping mode isolation strategy
+    
+
+
+
+
+
 ## Development mode strategy
 - Set the limit user email in the .env file 
     - When the user login, check the user email is in the allowed list
