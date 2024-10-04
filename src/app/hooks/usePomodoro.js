@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from './userAuth';
 import { saveSession } from '../firestoreService/sessionService';
-import { createOrUpdateUserState } from '../firestoreService/stateService';
 import { initializeAudio, playSound } from '../audioUtils';
+import { useUserState } from './useUserState';
+
 
 // Constants for timer durations
 const WORK_TIME = 25 * 60;  // Work duration: 25 minutes in seconds
@@ -23,14 +24,13 @@ export function usePomodoro() {
   const [startTime, setStartTime] = useState(null);     // Start time of the current session
   const intervalRef = useRef(null);                     // Reference to the timer interval
   const { user } = useAuth();                           // Get the current user from auth context
+  const { updateUserState } = useUserState();
+
 
   // Initialize audio when the component mounts
   useEffect(() => {
     initializeAudio();
     verboseLog('Pomodoro hook initialized');
-    if(user){
-      createOrUpdateUserState(user.userId, true, new Date());
-    }
   }, []);
 
   // Main timer logic
@@ -65,7 +65,9 @@ export function usePomodoro() {
       } else {
         // Work time finished: start break time
         if(user){
-          createOrUpdateUserState(user.userId, false, new Date());
+          updateUserState(false, new Date());
+          verboseLog('User state updated', { isInSession: false, startTime: new Date() });
+
         }
         setTimeLeft(BREAK_TIME);
         setIsBreak(true);
@@ -84,11 +86,19 @@ export function usePomodoro() {
       // Starting a new work session: set the start time
       setStartTime(new Date());
       verboseLog('New work session started', { startTime: new Date() });
+      if(user){
+        updateUserState(true, new Date());
+        verboseLog('User state updated', { isInSession: true, startTime: new Date() });
+      }
     }
     if (timeLeft === 0) {
       // Timer reached zero: reset for the next session
       setTimeLeft(isBreak ? BREAK_TIME : WORK_TIME);
       verboseLog('Timer reset', { isBreak, newTime: isBreak ? BREAK_TIME : WORK_TIME });
+      if(user){
+        updateUserState(false, new Date());
+        verboseLog('User state updated', { isInSession: false, startTime: new Date() });
+      }
     }
     setIsActive(!isActive);  // Toggle the timer state
     verboseLog('Timer toggled', { isNowActive: !isActive });

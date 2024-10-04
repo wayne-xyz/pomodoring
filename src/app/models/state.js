@@ -17,3 +17,12 @@ export function updateUserState(userState, newState) {
     ...newState
   };
 }
+
+export function getUserState(userId) {
+  return {
+    userId,
+    isInSession: false,
+    startTime: null
+  };
+}
+
