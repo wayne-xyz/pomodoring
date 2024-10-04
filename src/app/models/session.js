@@ -32,11 +32,11 @@ export function createCompletedSession(
     taskName,
     projectId,
     projectName,
-    startTime: startTime.toISOString(),
-    endTime: endTime.toISOString(),
+    startTime: startTime,
+    endTime: endTime,
     duration,
     status,
-    createdAt: new Date().toISOString()
+    createdAt: new Date()
   };
 }
 
