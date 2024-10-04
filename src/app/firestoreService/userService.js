@@ -37,7 +37,7 @@ export async function updateUser(userId, updateData) {
     const updatedUser = { 
       ...currentUser, 
       ...updateData, 
-      updatedAt: new Date().toISOString() 
+      updatedAt: new Date()
     };
     // Validate the updated user object
     validateUser(updatedUser);
@@ -84,9 +84,9 @@ export async function getCurrentUser() {
           email: currentUser.email,
           displayName: currentUser.displayName, // Include displayName
           userType: 'unpaid', // Default value
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          lastLogin: new Date().toISOString()
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          lastLogin: new Date()
         });
         await saveUser(newUser);
         return newUser;
@@ -124,5 +124,5 @@ export async function createOrUpdateUser(userData) {
  * @returns {Object} The updated user object
  */
 export async function updateUserLastLogin(userId) {
-  return await updateUser(userId, { lastLogin: new Date().toISOString() });
+  return await updateUser(userId, { lastLogin: new Date() });
 }

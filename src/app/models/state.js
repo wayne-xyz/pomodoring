@@ -7,7 +7,7 @@ export function createUserState(userId, isInSession, startTime) {
   return {
     userId,
     isInSession, //default false 
-    startTime //default null
+    startTime //default null Date()
   };
 }
 

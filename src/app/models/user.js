@@ -14,8 +14,8 @@ export function createUser({
   subscriptionEndDate = null,
   trialEndDate = null, // lifetime user will have trialEndDate for 3 months
   isTrial = false, // for the lifetime user this is true for 3 months
-  createdAt = new Date().toISOString(),
-  updatedAt = new Date().toISOString(),
+  createdAt = new Date(),
+  updatedAt = new Date(),
   lastLogin = null
 } = {}) {
   return {
