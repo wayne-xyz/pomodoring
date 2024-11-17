@@ -82,7 +82,7 @@ export default function LoginDropdownMenu() {
             Settings
           </DropdownMenuItem>
           <DropdownMenuSeparator className="my-2" />
-          <DropdownMenuItem>
+          <DropdownMenuItem className="px-3 py-2.5 text-sm cursor-pointer">
             <ThemeToggle />
           </DropdownMenuItem>
           <DropdownMenuSeparator />

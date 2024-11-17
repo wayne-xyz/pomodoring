@@ -1,17 +1,42 @@
 "use client"
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun, Laptop } from "lucide-react"
 import { useTheme } from "next-themes"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
 
   return (
-    <div onClick={() => setTheme(theme === "light" ? "dark" : "light")} className="flex items-center cursor-pointer">
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="ml-2">{theme === "light" ? "Dark" : "Light"} mode</span>
-    </div>
+    <ToggleGroup 
+      type="single" 
+      value={theme}
+      onValueChange={(value) => {
+        if (value) setTheme(value)
+      }}
+      className="flex gap-1"
+    >
+      <ToggleGroupItem 
+        value="light" 
+        aria-label="Light mode"
+        className={`data-[state=on]:bg-primary/20 data-[state=on]:text-primary hover:bg-primary/10 ${theme === 'light' ? 'bg-primary/20 text-primary' : ''}`}
+      >
+        <Sun className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem 
+        value="dark" 
+        aria-label="Dark mode"
+        className={`data-[state=on]:bg-primary/20 data-[state=on]:text-primary hover:bg-primary/10 ${theme === 'dark' ? 'bg-primary/20 text-primary' : ''}`}
+      >
+        <Moon className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem 
+        value="system" 
+        aria-label="System mode"
+        className={`data-[state=on]:bg-primary/20 data-[state=on]:text-primary hover:bg-primary/10 ${theme === 'system' ? 'bg-primary/20 text-primary' : ''}`}
+      >
+        <Laptop className="h-4 w-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
   )
 }
