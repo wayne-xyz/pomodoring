@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="mt-64">
+      <div className="mt-[30vh] flex items-center justify-center">
         <PomodoroTimer />
       </div>
       <div className="flex flex-row justify-center items-center  gap-4 mt-12">

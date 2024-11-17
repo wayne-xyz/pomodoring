@@ -1,8 +1,6 @@
-
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-
-
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 export const metadata = {
   title: "Pomodoring - Measure and Improve",
@@ -11,10 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={` antialiased`}>
-        <main>{children}</main>
-      <Toaster />
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <main>{children}</main>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

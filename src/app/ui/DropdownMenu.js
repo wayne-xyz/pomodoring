@@ -12,6 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import GoogleButton from './GoogleButton';
 import { useToast } from "@/hooks/use-toast";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export default function LoginDropdownMenu() {
   const { user, signInWithGoogle, logout } = useAuth();
@@ -81,6 +82,10 @@ export default function LoginDropdownMenu() {
             Settings
           </DropdownMenuItem>
           <DropdownMenuSeparator className="my-2" />
+          <DropdownMenuItem>
+            <ThemeToggle />
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem 
             onClick={handleLogout}
             className="px-3 py-2.5 text-sm cursor-pointer"

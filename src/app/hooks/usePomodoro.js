@@ -119,7 +119,7 @@ export function usePomodoro() {
           duration: WORK_TIME / 60,  // Convert seconds to minutes
           status: 'completed'
         };
-        verboseLog('Saving session', sessionData);
+        verboseLog('Saving session', sessionData); 
         const savedSession = await saveSession(sessionData);
         verboseLog('Session saved successfully', savedSession);
       } catch (error) {
