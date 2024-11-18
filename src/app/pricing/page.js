@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check } from 'lucide-react'
 import Header from '../header'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function PricingPage() {
   const [pricingData, setPricingData] = useState(null)
@@ -115,6 +116,15 @@ export default function PricingPage() {
         <div className="mt-12 text-center text-sm text-muted-foreground">
           <p>{pricingData.footer.currency}</p>
           <p className="mt-1">{pricingData.footer.guarantee}</p>
+          <div className="mt-4 flex items-center justify-center space-x-4">
+            <Link href="/terms" className="text-muted-foreground hover:text-primary underline">
+              Terms of Service
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="text-muted-foreground hover:text-primary underline">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </>

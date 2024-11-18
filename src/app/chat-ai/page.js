@@ -55,6 +55,7 @@ export default function ChatAIPage() {
                   <li>AI-generated improvement suggestions</li>
                   <li>Real-time answers to your time management questions</li>
                   <li>Integration with your Pomodoro data</li>
+                  <li>Visiualization of your productivity trends</li>
                 </ul>
               </div>
               <div className="text-center">
