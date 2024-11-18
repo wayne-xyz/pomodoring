@@ -1,0 +1,61 @@
+{
+  "title": "Pricing Plans",
+  "subtitle": "Choose the perfect plan for your productivity journey",
+  "footer": {
+    "currency": "Prices shown are in USD. Limited time offer.",
+    "guarantee": "All plans include a 30-day money-back guarantee."
+  },
+  "popularBadge": {
+    "text": "Best Value",
+    "className": "text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+  },
+  "plans": [
+    {
+      "name": "Free",
+      "description": "Get started with basic Pomodoro tracking",
+      "price": "$0",
+      "originalPrice": "$0",
+      "discount": null,
+      "interval": "forever",
+      "features": [
+        "Pomodoro Timer"
+      ],
+      "buttonText": "Start for Free",
+      "buttonVariant": "outline"
+    },
+    {
+      "name": "Annual",
+      "description": "Unlock advanced features for a year",
+      "price": "$5",
+      "originalPrice": "$10",
+      "discount": "50% off",
+      "interval": "per year",
+      "features": [
+        "Pomodoro Timer",
+        "AI-powered Analysis",
+        "Dynamic AI-generated Visual Data",
+        "Advanced Features"
+      ],
+      "buttonText": "Subscribe Annually",
+      "buttonVariant": "default"
+    },
+    {
+      "name": "Lifetime",
+      "description": "Get unlimited access forever",
+      "price": "$10",
+      "originalPrice": "$20",
+      "discount": "50% off",
+      "interval": "one-time",
+      "features": [
+        "Pomodoro Timer",
+        "AI-powered Analysis",
+        "Dynamic AI-generated Visual Data",
+        "Advanced Features",
+        "Lifetime Updates"
+      ],
+      "buttonText": "Get Lifetime Access",
+      "buttonVariant": "default",
+      "isPopular": true
+    }
+  ]
+}

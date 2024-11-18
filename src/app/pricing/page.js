@@ -4,79 +4,68 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from 'lucide-react'
 import Header from '../header'
+import { useEffect, useState } from 'react'
 
 export default function PricingPage() {
-  const plans = [
-    {
-      name: "Free",
-      description: "Get started with basic Pomodoro tracking",
-      price: "$0",
-      originalPrice: "$0",
-      discount: null,
-      interval: "forever",
-      features: ["Pomodoro Timer"],
-      buttonText: "Start for Free",
-      buttonVariant: "outline",
-    },
-    {
-      name: "Annual",
-      description: "Unlock advanced features for a year",
-      price: "$5",
-      originalPrice: "$10",
-      discount: "50% off",
-      interval: "per year",
-      features: [
-        "Pomodoro Timer",
-        "AI-powered Analysis",
-        "Dynamic AI-generated Visual Data",
-        "Advanced Features",
-      ],
-      buttonText: "Subscribe Annually",
-      buttonVariant: "default",
-    },
-    {
-      name: "Lifetime",
-      description: "Get unlimited access forever",
-      price: "$10",
-      originalPrice: "$20",
-      discount: "50% off",
-      interval: "one-time",
-      features: [
-        "Pomodoro Timer",
-        "AI-powered Analysis",
-        "Dynamic AI-generated Visual Data",
-        "Advanced Features",
-        "Lifetime Updates",
-      ],
-      buttonText: "Get Lifetime Access",
-      buttonVariant: "default",
-      isPopular: true,
-    },
-  ]
+  const [pricingData, setPricingData] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/content/priceplan.json')
+      .then(response => response.json())
+      .then(data => {
+        setPricingData(data)
+        setLoading(false)
+      })
+      .catch(error => {
+        console.error('Error loading pricing data:', error)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="container mx-auto px-4 py-8 text-center">
+          Loading pricing plans...
+        </div>
+      </>
+    )
+  }
+
+  if (!pricingData) {
+    return (
+      <>
+        <Header />
+        <div className="container mx-auto px-4 py-8 text-center text-red-500">
+          Error loading pricing plans. Please try again later.
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
       <Header />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-2">Pricing Plans</h1>
+        <h1 className="text-4xl font-bold text-center mb-2">{pricingData.title}</h1>
         <p className="text-xl text-center text-muted-foreground mb-8">
-          Choose the perfect plan for your productivity journey
+          {pricingData.subtitle}
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {plans.map((plan) => (
+          {pricingData.plans.map((plan) => (
             <Card 
               key={plan.name} 
-              className={`flex flex-col hover:shadow-lg transition-shadow duration-300 ${
-                plan.isPopular ? 'border-primary ring-1 ring-primary' : ''
-              }`}
+              className="flex flex-col hover:shadow-lg transition-shadow duration-300"
             >
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   {plan.name}
                   {plan.isPopular && (
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                      Best Value
+                    <span className={pricingData.popularBadge.className}>
+                      {pricingData.popularBadge.text}
                     </span>
                   )}
                 </CardTitle>
@@ -124,8 +113,8 @@ export default function PricingPage() {
         </div>
 
         <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>Prices shown are in USD. Limited time offer.</p>
-          <p className="mt-1">All plans include a 30-day money-back guarantee.</p>
+          <p>{pricingData.footer.currency}</p>
+          <p className="mt-1">{pricingData.footer.guarantee}</p>
         </div>
       </div>
     </>
