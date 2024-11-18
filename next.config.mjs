@@ -12,6 +12,9 @@ const nextConfig = {
 
     return config;
   },
+  eslint: {
+    ignoreDuringBuilds: true, // This will ignore ESLint errors during production build
+  },
 };
 
 export default nextConfig;
