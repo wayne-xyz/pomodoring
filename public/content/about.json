@@ -1,0 +1,24 @@
+{
+  "title": "About Pomodoring",
+  "slogan": "Measure and Improve",
+  "description": "Pomodoring is a web-based platform designed to help users improve their concentration and focus, ultimately boosting productivity. Using the Pomodoro Technique, the website offers a timer to track your work and break intervals, encouraging a balanced approach to productivity.",
+  "features": [
+    {
+      "name": "Pomodoro Timer",
+      "description": "Track your work sessions and breaks with the Pomodoro timer. Stay focused and make the most of your time by using the scientifically-backed Pomodoro Technique."
+    },
+    {
+      "name": "AI-Powered Productivity Analysis",
+      "description": "Leverage AI to analyze your productivity data. Chat with the AI to receive insights and suggestions on how to improve your concentration and efficiency."
+    },
+    {
+      "name": "Improvement Charts",
+      "description": "Visualize your productivity over time with our charts. Track your progress and see how small improvements lead to big results."
+    }
+  ],
+  "mission": "Our mission is to provide users with the tools and insights they need to become more focused, productive, and mindful of how they manage their time. Pomodoring is here to help you not only get more done but also enjoy the process of improvement.",
+  "author": {
+    "name": "Wayne",
+    "website": "https://waynej.me"
+  }
+}
