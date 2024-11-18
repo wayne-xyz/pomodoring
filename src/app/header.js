@@ -45,15 +45,17 @@ export default function Header() {
             </Link>
           </div>
           <nav className="flex items-center space-x-6">
-            <Link href="/about" className="text-primary hover:text-primary-dark">
-              About
-            </Link>
-            <Link href="/pricing" className="text-primary hover:text-primary-dark">
-              Pricing
-            </Link>
             <Link href="/chart-ai" className="text-primary hover:text-primary-dark">
               Chart-AI
             </Link>
+
+            <Link href="/pricing" className="text-primary hover:text-primary-dark">
+              Pricing
+            </Link>            
+            <Link href="/about" className="text-primary hover:text-primary-dark">
+              About
+            </Link>
+
             <LoginDropdownMenu />
           </nav>
         </div>
