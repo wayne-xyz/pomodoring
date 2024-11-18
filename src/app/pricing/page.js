@@ -27,7 +27,7 @@ export default function PricingPage() {
     return (
       <>
         <Header />
-        <div className="container mx-auto px-4 py-8 text-center">
+        <div className="container mx-auto px-4 py-8 min-h-[calc(100vh-4rem)] flex items-center justify-center">
           Loading pricing plans...
         </div>
       </>
@@ -38,7 +38,7 @@ export default function PricingPage() {
     return (
       <>
         <Header />
-        <div className="container mx-auto px-4 py-8 text-center text-red-500">
+        <div className="container mx-auto px-4 py-8 min-h-[calc(100vh-4rem)] flex items-center justify-center text-red-500">
           Error loading pricing plans. Please try again later.
         </div>
       </>
@@ -48,7 +48,7 @@ export default function PricingPage() {
   return (
     <>
       <Header />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
         <h1 className="text-4xl font-bold text-center mb-2">{pricingData.title}</h1>
         <p className="text-xl text-center text-muted-foreground mb-8">
           {pricingData.subtitle}

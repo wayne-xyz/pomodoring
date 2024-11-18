@@ -45,8 +45,8 @@ export default function Header() {
             </Link>
           </div>
           <nav className="flex items-center space-x-6">
-            <Link href="/chart-ai" className="text-primary hover:text-primary-dark">
-              Chart-AI
+            <Link href="/chat-ai" className="text-primary hover:text-primary-dark">
+              Chat-AI
             </Link>
 
             <Link href="/pricing" className="text-primary hover:text-primary-dark">
