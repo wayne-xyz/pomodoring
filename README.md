@@ -10,6 +10,11 @@
 
 Devloping released soon.
 
+### Dev branch
+- feature-name: use feature-name branch to develop new feature
+- preview: use preview branch to preview before merge to main
+- main: use main branch to deploy to production
+
 ### Resources
 
 - [Google Icon](https://developers.google.com/identity/branding-guidelines)
