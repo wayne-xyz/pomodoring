@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { fetchUserTasks, createTaskInFirestore } from "../firestoreService/taskService"
+import { fetchUserTasks, createTaskInFirestore, updateCurrentTask } from "../firestoreService/taskService"
 
 export function TasksCombobox({ userId }) {
   const [open, setOpen] = React.useState(false)
@@ -31,28 +31,39 @@ export function TasksCombobox({ userId }) {
     const loadTasks = async () => {
       try {
         let userTasks = await fetchUserTasks(userId)
+        console.log('Fetched tasks:', userTasks)
         
         // Only create default task if it hasn't been created yet
         if (userTasks.length === 0 && !defaultTaskCreated.current) {
           defaultTaskCreated.current = true
           const defaultTask = await createTaskInFirestore({
             userId,
-            title: "Default Task",
+            taskName: "Default Task",
             description: "This is your default task",
-            status: "in-progress",
+            status: "current", //first task is always current which means it's selected
             priority: 2
           })
           userTasks = [defaultTask]
+          console.log('Default task created:', defaultTask)
         }
 
         // Transform tasks into the format needed for the combobox
+        console.log('User tasks,start formatting:', userTasks)
         const formattedTasks = userTasks.map(task => ({
           value: task.taskId,
           label: task.taskName,
           status: task.status
         }))
-
+        console.log('User tasks,after formatting:', formattedTasks)
         setTasks(formattedTasks)
+
+        // Find and select the task with 'current' status
+        const currentTask = formattedTasks.find(task => task.status === 'current')
+        if (currentTask) {
+          setValue(currentTask.value)
+          console.log('Selected current task:', currentTask)
+        }
+
       } catch (error) {
         console.error("Error loading tasks:", error)
       } finally {
@@ -65,8 +76,12 @@ export function TasksCombobox({ userId }) {
     }
   }, [userId])
 
-  if (loading) {
-    return <Button variant="outline" className="w-[200px]">Loading tasks...</Button>
+  const handleTaskSelect = async (task) => {
+    console.log('Selecting task:', task)
+    setValue(task.value)
+    setOpen(false)
+    
+    await updateCurrentTask(userId, task.value)
   }
 
   return (
@@ -93,21 +108,16 @@ export function TasksCombobox({ userId }) {
               {tasks.map((task) => (
                 <CommandItem
                   key={task.value}
-                  value={task.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
+                  value={task}
+                  onSelect={() => handleTaskSelect(task)}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === task.value ? "opacity-100" : "opacity-0"
+                      task.value === value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  <span className={cn(
-                    task.status === 'completed' && "line-through text-muted-foreground"
-                  )}>
+                  <span >
                     {task.label}
                   </span>
                 </CommandItem>

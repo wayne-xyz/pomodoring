@@ -6,12 +6,13 @@
     - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
     - [X] Play sound when timer is done
     - [X] Account login 
-    - [ ] Dark/light mode
-    - [ ] Saving data in the database
-    - [ ] About page
-    - [ ] Pricing page 
-    - [ ] Devloping mode isolation strategy
-    
+    - [X] Dark/light mode
+    - [X] Saving data in the database
+    - [X] About page
+    - [X] Pricing page 
+    - [X] Devloping mode isolation strategy
+    - [X] Task combobox / task list
+    - [ ] Agent to generate the graph of the analysis
 
 
 

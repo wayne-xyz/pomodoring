@@ -20,7 +20,7 @@ export function createTask({
   projectId = '',
   taskName = 'Default Task', // default is 'Default Task'
   description = '',
-  status = 'in-progress', // 'todo', 'in-progress'- default, 'completed', 'archived'
+  status = 'in-progress', // 'todo', 'in-progress'- default, 'completed', 'archived','current'
   priority = 2,
   estimatedPoms = 1,
   completedPoms = 0,

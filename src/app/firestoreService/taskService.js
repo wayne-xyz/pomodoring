@@ -121,3 +121,40 @@ export async function deleteTask(taskId) {
     throw error;
   }
 }
+
+
+
+/**
+ * Fetches the current task for a user
+ * @param {string} userId - The user's ID
+ * @returns {Promise<Object>} Current task object
+ */
+export async function getCurrentTaskInfo(userId) {
+  const tasks = await fetchUserTasks(userId);
+  return tasks.find(task => task.status === 'current');
+} 
+
+
+
+/**
+ * update the current task for a user 
+ * @param {string} userId - The user's ID
+ * @param {string} taskId - The task's ID
+ * @returns {Promise<void>}
+ */
+export async function updateCurrentTask(userId, taskId) {
+  // TODO: Implement this function
+//fetch the current task from the database change to in-progress
+  const currentTask = await getCurrentTaskInfo(userId);
+  if (currentTask) {
+    await updateTask(currentTask.taskId, { status: 'in-progress' });
+  }
+// then update a task to current
+  try {
+    const taskRef = doc(db, TASKS_COLLECTION, taskId);
+    await updateDoc(taskRef, { status: 'current' });
+  } catch (error) {
+    console.error('Error updating current task:', error);
+    throw error;
+  }
+}

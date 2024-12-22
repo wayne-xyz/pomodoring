@@ -40,7 +40,7 @@
  projectId      | string    | ID of the project this task belongs to                              |
  taskName      | string    | Title/name of the task                                              |
  description    | string    | Detailed description of the task                                     |
- status         | string    | Current status ('todo', 'in-progress', 'completed', 'archived')      |
+ status         | string    | Current status ('todo', 'in-progress'-default, 'completed', 'archived','current'-selected)      |
  priority       | number    | Task priority level (1: High, 2: Medium, 3: Low)                     |
  estimatedPoms  | number    | Estimated number of Pomodoros needed                                 |
  completedPoms  | number    | Number of completed Pomodoros                                        |
