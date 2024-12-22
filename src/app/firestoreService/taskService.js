@@ -1,4 +1,4 @@
-import { db } from '../firebase/firebase';
+import { db } from '../lib/firebase';
 import { collection, addDoc, getDocs, query, where, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { createTask } from '../models/task';
 
