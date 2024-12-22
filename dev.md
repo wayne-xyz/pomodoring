@@ -19,6 +19,17 @@
 
 
 ## Development mode strategy
+- task list and session stergy 
+    - when the session end, update the session info with the current taskid and projectid
+
+- firestore storage strategy
+    - start session, -> update the states collection,
+    - end session, -> update the states collection, add a new session record
+    - signup, -> create a new user, creat a default task  
+
+
+
+
 - Set the limit user email in the .env file 
     - When the user login, check the user email is in the allowed list
     - If not, prompt the user it's not public beta version
