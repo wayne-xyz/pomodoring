@@ -14,11 +14,13 @@ export default function Home() {
     priority: null
   });
 
+  // Show only if explicitly set to 'true'
+  const showTasksCombobox = process.env.NEXT_PUBLIC_LOCAL_MODE === 'true';
 
   useEffect(() => {
-    console.log('currentTask changed:', currentTask)
-  }, [currentTask])
-
+    console.log('currentTask changed:', currentTask);
+    console.log('Local mode:', process.env.NEXT_PUBLIC_LOCAL_MODE);
+  }, [currentTask]);
 
   return (
     <div>
@@ -26,7 +28,8 @@ export default function Home() {
       <div className="mt-[30vh] flex items-center justify-center">
         <PomodoroTimer currentTask={currentTask} />
       </div>
-      {userState && (
+      {/* Only show TasksCombobox if explicitly in local mode */}
+      {userState && showTasksCombobox && (
         <div className="flex flex-row justify-center items-center gap-4 mt-12">
           <TasksCombobox userId={userState.userId} onTaskSelect={task => setCurrentTask(
             {
