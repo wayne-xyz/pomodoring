@@ -3,7 +3,7 @@
 // name: userState
 // fields: userId, isInSession, startTime
 
-export function createUserState(userId, isInSession, startTime) {
+export function createUserState(userId, isInSession, startTime, currentTaskId, currentProjectId) {
   return {
     userId,
     isInSession, //default false 

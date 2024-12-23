@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/popover"
 import { fetchUserTasks, createTaskInFirestore, updateCurrentTask } from "../firestoreService/taskService"
 
-export function TasksCombobox({ userId }) {
+export function TasksCombobox({ userId, onTaskSelect }) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
   const [tasks, setTasks] = React.useState([])
@@ -62,6 +62,7 @@ export function TasksCombobox({ userId }) {
         if (currentTask) {
           setValue(currentTask.value)
           console.log('Selected current task:', currentTask)
+          onTaskSelect(currentTask) //call the callback function to update the current task
         }
 
       } catch (error) {
@@ -82,6 +83,7 @@ export function TasksCombobox({ userId }) {
     setOpen(false)
     
     await updateCurrentTask(userId, task.value)
+    onTaskSelect(task) //call the callback function to update the current task
   }
 
   return (

@@ -16,7 +16,7 @@ const verboseLog = (message, data) => {
   }
 };
 
-export function usePomodoro() {
+export function usePomodoro({currentTask}) {
   // State variables
   const [timeLeft, setTimeLeft] = useState(WORK_TIME);  // Remaining time in current session
   const [isActive, setIsActive] = useState(false);      // Is the timer currently running?
@@ -87,7 +87,8 @@ export function usePomodoro() {
       setStartTime(new Date());
       verboseLog('New work session started', { startTime: new Date() });
       if(user){
-        updateUserState(true, new Date());
+
+        updateUserState(true, new Date(), currentTask.taskId);
         verboseLog('User state updated', { isInSession: true, startTime: new Date() });
       }
     }
@@ -110,8 +111,8 @@ export function usePomodoro() {
       try {
         const sessionData = {
           userId: user.userId,
-          taskId: 'default-task',
-          taskName: 'Pomodoro Session',
+          taskId: currentTask.value,
+          taskName: currentTask.label,
           projectId: 'default-project',
           projectName: 'Default Project',
           startTime: startTime,

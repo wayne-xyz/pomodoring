@@ -24,8 +24,9 @@
 
 - firestore storage strategy
     - start session, -> update the states collection,
-    - end session, -> update the states collection, add a new session record
-    - signup, -> create a new user, creat a default task  
+    - end session, -> update the states collection, add a new session record(using the states collection's taskid and projectid)
+    - signup, -> create a new user, creat a default task, update the states collection( by new taskid)
+    - select task -> update the task collection, update the states collection( by new taskid)
 
 
 

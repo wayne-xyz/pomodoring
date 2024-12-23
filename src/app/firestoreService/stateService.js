@@ -24,18 +24,20 @@ export async function getUserState(userId) {
  * @param {string} userId - The ID of the user
  * @param {boolean} isInSession - Whether the user is in a session
  * @param {Date|null} startTime - The start time of the current session
+ * @param {string|null} currentTaskId - The ID of the current task
  * @returns {Promise<Object>} The updated user state
  */
-export async function createOrUpdateUserState(userId, isInSession, startTime) {
+export async function createOrUpdateUserState(userId, isInSession, startTime, currentTaskId) {
   const stateRef = doc(db, COLLECTION_NAME, userId);
   const existingState = await getUserState(userId);
 
+
   if (existingState) {
-    const updatedState = updateUserState(existingState, { isInSession, startTime });
+    const updatedState = updateUserState(existingState, {userId, isInSession, startTime, currentTaskId });
     await updateDoc(stateRef, updatedState);
     return updatedState;
   } else {
-    const newState = createUserState(userId, isInSession, startTime);
+    const newState = createUserState(userId, isInSession, startTime, currentTaskId);
     await setDoc(stateRef, newState);
     return newState;
   }
@@ -46,8 +48,8 @@ export async function createOrUpdateUserState(userId, isInSession, startTime) {
  * @param {string} userId - The ID of the user
  * @returns {Promise<Object>} The updated user state
  */
-export async function startSession(userId) {
-  return createOrUpdateUserState(userId, true, new Date());
+export async function startSession(userId, currentTaskId) {
+  return createOrUpdateUserState(userId, true, new Date(), currentTaskId);
 }
 
 /**
@@ -55,8 +57,8 @@ export async function startSession(userId) {
  * @param {string} userId - The ID of the user
  * @returns {Promise<Object>} The updated user state
  */
-export async function endSession(userId) {
-  return createOrUpdateUserState(userId, false, null);
+export async function endSession(userId, currentTaskId) {
+  return createOrUpdateUserState(userId, false, null, currentTaskId);
 }
 
 /**

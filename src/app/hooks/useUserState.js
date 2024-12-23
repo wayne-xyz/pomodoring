@@ -31,13 +31,13 @@ export function useUserState() {
 		}
 	}, [user, authLoading]);
 
-	const updateUserState = useCallback(async (isInSession, startTime) => {
+	const updateUserState = useCallback(async (isInSession, startTime, currentTaskId) => {
 		if (!user || authLoading) return;
 
 		try {
 			setIsLoading(true);
 			setError(null);
-			const updatedState = await createOrUpdateUserState(user.userId, isInSession, startTime);
+			const updatedState = await createOrUpdateUserState(user.userId, isInSession, startTime, currentTaskId);
 			setUserState(updatedState);
 		} catch (err) {
 			console.error("Error updating user state:", err);
