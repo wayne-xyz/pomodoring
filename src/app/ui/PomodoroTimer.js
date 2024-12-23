@@ -5,7 +5,7 @@ import { Play, Pause } from 'lucide-react';
 import { Button } from "./button"
 import { usePomodoro } from '../hooks/usePomodoro';
 
-export default function PomodoroTimer() {
+export default function PomodoroTimer({currentTask}) {
   const {
     timeLeft,
     isActive,
@@ -13,7 +13,11 @@ export default function PomodoroTimer() {
     toggleTimer,
     formatTime,
     calculateProgress
-  } = usePomodoro();
+  } = usePomodoro({currentTask});
+
+  React.useEffect(() => {
+    console.log('currentTaskId changed in PomodoroTimer', currentTask)
+  }, [currentTask])
 
   return (
     <div className="flex flex-col items-center justify-center bg-background ]">

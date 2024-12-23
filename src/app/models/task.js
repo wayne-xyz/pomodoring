@@ -4,7 +4,7 @@
  * @param {string} [params.taskId=null] - Unique identifier for the task
  * @param {string} [params.userId=''] - ID of the user who owns the task
  * @param {string} [params.projectId=''] - ID of the project this task belongs to
- * @param {string} [params.title=''] - Title/name of the task
+ * @param {string} [params.taskName=''] - Title/name of the task
  * @param {string} [params.description=''] - Detailed description of the task
  * @param {string} [params.status='todo'] - Current status of the task
  * @param {number} [params.priority=2] - Task priority level (1: High, 2: Medium, 3: Low)
@@ -20,7 +20,7 @@ export function createTask({
   projectId = '',
   taskName = 'Default Task', // default is 'Default Task'
   description = '',
-  status = 'in-progress', // 'todo', 'in-progress'- default, 'completed', 'archived'
+  status = 'in-progress', // 'todo', 'in-progress'- default, 'completed', 'archived','current'
   priority = 2,
   estimatedPoms = 1,
   completedPoms = 0,

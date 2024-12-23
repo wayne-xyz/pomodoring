@@ -3,11 +3,13 @@
 // name: userState
 // fields: userId, isInSession, startTime
 
-export function createUserState(userId, isInSession, startTime) {
+export function createUserState(userId, isInSession, startTime, currentTaskId, currentProjectId) {
   return {
     userId,
     isInSession, //default false 
-    startTime //default null Date()
+    startTime, //default null Date()
+    currentTaskId: null, //default null
+    currentProjectId: null //default null
   };
 }
 
@@ -22,7 +24,9 @@ export function getUserState(userId) {
   return {
     userId,
     isInSession: false,
-    startTime: null
+    startTime: null,
+    currentTaskId: null,
+    currentProjectId: null
   };
 }
 

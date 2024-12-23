@@ -6,18 +6,31 @@
     - [X] Titile bar : LOGO, Pricing, Chart-AI,Account
     - [X] Play sound when timer is done
     - [X] Account login 
-    - [ ] Dark/light mode
-    - [ ] Saving data in the database
-    - [ ] About page
-    - [ ] Pricing page 
-    - [ ] Devloping mode isolation strategy
-    
+    - [X] Dark/light mode
+    - [X] Saving data in the database
+    - [X] About page
+    - [X] Pricing page 
+    - [X] Devloping mode isolation strategy
+    - [X] Task combobox / task list
+    - [ ] Agent to generate the graph of the analysis
 
 
 
 
 
 ## Development mode strategy
+- task list and session stergy 
+    - when the session end, update the session info with the current taskid and projectid
+
+- firestore storage strategy
+    - start session, -> update the states collection,
+    - end session, -> update the states collection, add a new session record(using the states collection's taskid and projectid)
+    - signup, -> create a new user, creat a default task, update the states collection( by new taskid)
+    - select task -> update the task collection, update the states collection( by new taskid)
+
+
+
+
 - Set the limit user email in the .env file 
     - When the user login, check the user email is in the allowed list
     - If not, prompt the user it's not public beta version

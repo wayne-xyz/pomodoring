@@ -14,6 +14,19 @@ import GoogleButton from './GoogleButton';
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
+const getUserTypeDisplay = (userType) => {
+  switch (userType) {
+    case 'unpaid':
+      return 'Basic User';
+    case 'annual':
+      return 'Annual Member';
+    case 'lifetime':
+      return 'Lifetime Member';
+    default:
+      return 'Basic User';
+  }
+};
+
 export default function LoginDropdownMenu() {
   const { user, signInWithGoogle, logout } = useAuth();
   const { toast } = useToast();
@@ -72,6 +85,9 @@ export default function LoginDropdownMenu() {
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">{user.displayName}</p>
               <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
+              <p className="text-xs leading-none text-muted-foreground mt-1">
+                {getUserTypeDisplay(user.userType)}
+              </p>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator className="my-2" />
