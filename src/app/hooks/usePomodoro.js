@@ -65,7 +65,7 @@ export function usePomodoro({currentTask}) {
       } else {
         // Work time finished: start break time
         if(user){
-          updateUserState(false, new Date());
+          updateUserState(false, new Date(), currentTask.taskId);
           verboseLog('User state updated', { isInSession: false, startTime: new Date() });
 
         }
@@ -97,7 +97,7 @@ export function usePomodoro({currentTask}) {
       setTimeLeft(isBreak ? BREAK_TIME : WORK_TIME);
       verboseLog('Timer reset', { isBreak, newTime: isBreak ? BREAK_TIME : WORK_TIME });
       if(user){
-        updateUserState(false, new Date());
+        updateUserState(false, new Date(), currentTask.taskId);
         verboseLog('User state updated', { isInSession: false, startTime: new Date() });
       }
     }
@@ -111,8 +111,8 @@ export function usePomodoro({currentTask}) {
       try {
         const sessionData = {
           userId: user.userId,
-          taskId: currentTask.value,
-          taskName: currentTask.label,
+          taskId: currentTask.taskId,
+          taskName: currentTask.taskName,
           projectId: 'default-project',
           projectName: 'Default Project',
           startTime: startTime,
